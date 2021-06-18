@@ -16,15 +16,18 @@ const squadre=[
     }
 ];
 var squadraFalli = 0;
+var squadraIndex = 0;
 for(let i=0; i<squadre.length; i++){
     squadre[i].punti = Math.floor(Math.random()*21);
     squadre[i].falli = Math.floor(Math.random()*21);
-    if(squadre[i].falli > squadraFalli){
-        squadraFalli = i;
+    var{falli} = squadre[i];
+    if(falli > squadraFalli){
+        squadraFalli = falli;
+        squadraIndex = i;
     }
 }
 
-console.log(squadre[squadraFalli]);
+console.log(squadre[squadraIndex]);
 
 function generateTable(table, data) {
     for (let element of data) {
@@ -35,7 +38,7 @@ function generateTable(table, data) {
         cell.appendChild(text);
       }
       
-      if(data[element] === data[squadraFalli]){
+      if(data[element] === data[squadraIndex]){
         row.style.backgroundColor= "yellow";
         cell.style.backgroundColor= "yellow";
         text.style.backgroundColor= "yellow";
